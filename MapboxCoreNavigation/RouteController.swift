@@ -615,6 +615,8 @@ extension RouteController: CLLocationManagerDelegate {
 
         self.rawLocation = location
 
+        navigator.onLocationChanged(for: location.asMBFixLocation())
+        
         delegate?.routeController?(self, didUpdate: [location])
 
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(interpolateLocation), object: nil)
